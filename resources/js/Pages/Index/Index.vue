@@ -1,14 +1,14 @@
 <template>
 
 <MainLayout>
-    <div>Index</div>
+    <div>Home Page</div>
     <Link href="/hello">
-      Show Page
+      Hello Page
     </Link>
     <div>
       The message is {{ message }}
     </div>
-</MainLayout>
+    </MainLayout>
   </template>
   
   <script setup>

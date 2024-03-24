@@ -1,6 +1,6 @@
 <template>
     <Link href="/">
-      Home
+      Home | 
     </Link>
     <Link href="/hello">
       Hello
@@ -13,4 +13,3 @@
   <script setup>
   import { Link } from '@inertiajs/inertia-vue3'
   </script>
-  

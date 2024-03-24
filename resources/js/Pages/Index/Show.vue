@@ -1,12 +1,10 @@
 <template>
     <MainLayout>
-    <div>Show</div>
-    <Link href="/">Main Page</Link>
-</MainLayout>
-  </template>
+    <div>Hello page</div>
+    <Link href="/">Go to Home Page</Link>
+  </MainLayout>
+        </template>
   
-  <script setup>
-  import { Link } from '@inertiajs/inertia-vue3'
-  import MainLayout from '../../Layouts/MainLayout.vue';
+      <script setup>
+          import { Link } from '@inertiajs/inertia-vue3'
   </script>
-  

@@ -14,13 +14,13 @@ class IndexController extends Controller
 
         // dd(Listing::all());
 
- dd(Auth::user());
-        // return inertia(
-        //     'Index/Index',
-        //     [
-        //         'message' => 'Hello from Laravel!'
-        //     ]
-        // );
+//  dd(Auth::user());
+        return inertia(
+            'Index/Index',
+            [
+                'message' => 'Hello from Laravel!'
+            ]
+        );
     }
 
     public function show()

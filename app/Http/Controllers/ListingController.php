@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Listing::class, 'listing');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,8 @@ class ListingController extends Controller
         return inertia(
             'Listing/Index',
             [
-                'listings' => Listing::all()
+                'listings' => Listing::orderByDesc('created_at')
+                    ->paginate(5)
             ]
         );
     }

@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Listing;
 
 class DashboardController extends Controller
 {
-
     public function __construct()
     {
         $this->authorizeResource(Listing::class, 'listing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
-        // dd(Auth::user()->listings);
+        $filters = [
+            'deleted' => $request->boolean('deleted')
+        ];
 
         return inertia(
             'Dashboard/Index',
-            ['listings' => Auth::user()->listings]
+            [
+                'filters' => $filters,
+                'listings' => Auth::user()
+                    ->listings()
+                    ->filter($filters)
+                    ->get()
+            ]        
         );
     }
 
@@ -32,5 +38,4 @@ class DashboardController extends Controller
         return redirect()->back()
             ->with('success', 'Listing was deleted!');
     }
-
 }

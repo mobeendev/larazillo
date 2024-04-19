@@ -13,7 +13,7 @@ class Listing extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     protected $fillable = [
         'beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price'
     ];
@@ -51,6 +51,9 @@ class Listing extends Model
         )->when(
             $filters['areaTo'] ?? false,
             fn ($query, $value) => $query->where('area', '<=', $value)
+        )->when(
+            $filters['deleted'] ?? false,
+            fn ($query, $value) => $query->withTrashed()
         );
     }
 }

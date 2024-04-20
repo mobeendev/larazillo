@@ -29,15 +29,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@gmail.com',
         ]);
 
-        \App\Models\Listing::factory(5)->create([
+        \App\Models\Listing::factory(15)->create([
             'by_user_id' => 1
         ]);
 
-        \App\Models\Listing::factory(5)->create([
+        \App\Models\Listing::factory(15)->create([
             'by_user_id' => 2
         ]);
 
-        \App\Models\Listing::factory(5)->create([
+        \App\Models\Listing::factory(15)->create([
             'by_user_id' => 3
         ]);
 

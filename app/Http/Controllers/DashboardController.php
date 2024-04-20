@@ -27,7 +27,8 @@ class DashboardController extends Controller
                 'listings' => Auth::user()
                     ->listings()
                     ->filter($filters)
-                    ->get()
+                    ->paginate(5)
+                    ->withQueryString()
             ]        
         );
     }

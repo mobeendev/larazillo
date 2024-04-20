@@ -98,6 +98,13 @@ class DashboardController extends Controller
             ->with('success', 'Listing was updated!');
     }
 
+    public function restore(Listing $listing)
+    {
+        $listing->restore();
+
+        return redirect()->back()->with('success', 'Listing was restored!');
+    }
+
     public function destroy(Listing $listing)
     {
         $listing->deleteOrFail();

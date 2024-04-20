@@ -27,6 +27,12 @@ Route::delete('logout', [AuthController::class, 'destroy'])
   ->name('dashboard.')
   ->middleware('auth')
   ->group(function () {
+    Route::name('listing.restore')
+      ->put(
+        'listing/{listing}/restore',
+        [DashboardController::class, 'restore']
+      )->withTrashed();
     Route::resource('listing', DashboardController::class)
-   ->only(['index', 'destroy', 'edit', 'update', 'create', 'store']);
+      ->only(['index', 'destroy', 'edit', 'update', 'create', 'store'])
+      ->withTrashed();
   });

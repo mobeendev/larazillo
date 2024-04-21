@@ -30,15 +30,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Listing::factory(15)->create([
-            'by_user_id' => 1
+            'by_user_id' => 1,
         ]);
 
         \App\Models\Listing::factory(15)->create([
-            'by_user_id' => 2
+            'by_user_id' => 2,
         ]);
 
         \App\Models\Listing::factory(15)->create([
-            'by_user_id' => 3
+            'by_user_id' => 3,
         ]);
 
     }

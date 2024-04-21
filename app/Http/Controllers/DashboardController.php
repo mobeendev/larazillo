@@ -15,9 +15,10 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
+
         $filters = [
             'deleted' => $request->boolean('deleted'),
-            ...$request->only(['by', 'order'])
+            ...$request->only(['by', 'order']),
         ];
 
         return inertia(
@@ -28,12 +29,12 @@ class DashboardController extends Controller
                     ->listings()
                     ->filter($filters)
                     ->paginate(5)
-                    ->withQueryString()
-            ]        
+                    ->withQueryString(),
+            ]
         );
     }
 
-     /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,7 +47,6 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -58,7 +58,7 @@ class DashboardController extends Controller
                 'area' => 'required|integer|min:15|max:1500',
                 'city' => 'required',
                 'code' => 'required',
-                'street' => 'required',
+                'street ' => 'required',
                 'street_nr' => 'required|min:1|max:1000',
                 'price' => 'required|integer|min:1|max:20000000',
             ])
@@ -73,13 +73,12 @@ class DashboardController extends Controller
         return inertia(
             'Dashboard/Edit',
             [
-                'listing' => $listing
+                'listing' => $listing,
             ]
         );
     }
 
-
-    public function update(Request $request,  Listing $listing)
+    public function update(Request $request, Listing $listing)
     {
         $listing->update(
             $request->validate([

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
       <Box class="md:col-span-7 flex items-center">
-        <div class="w-full text-center font-medium text-gray-500">No images</div>
+        <div class="w-full text-center font-medium text-gray-500"> <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /> </div>
       </Box>
       <div class="md:col-span-5 flex flex-col gap-4">
         <Box>

@@ -70,6 +70,7 @@ class DashboardController extends Controller
 
     public function edit(Listing $listing)
     {
+
         return inertia(
             'Dashboard/Edit',
             [

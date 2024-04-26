@@ -1,0 +1,39 @@
+name: Laravel Static Analysis with Larastan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  larastan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP with extensions required by Laravel
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, pdo_mysql, gd, xml, ctype, tokenizer, json, bcmath, curl
+          tools: composer, phpstan
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
+
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Run Larastan
+        run: ./vendor/bin/phpstan analyse --configuration phpstan.neon
+
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint

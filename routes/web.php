@@ -37,5 +37,5 @@ Route::prefix('dashboard')
             ->only(['index', 'destroy', 'edit', 'update', 'create', 'store'])
             ->withTrashed();
         Route::resource('listing.image', ListingImageController::class)
-            ->only(['create', 'store']);
+            ->only(['create', 'store', 'destroy']);
     });

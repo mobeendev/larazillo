@@ -10,6 +10,8 @@ class ListingImageController extends Controller
 {
     public function create(Listing $listing)
     {
+        $listing->load(['images']);
+
         return inertia(
             'Dashboard/ListingImage/Create',
             ['listing' => $listing]

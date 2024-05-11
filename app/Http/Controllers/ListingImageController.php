@@ -22,6 +22,12 @@ class ListingImageController extends Controller
     public function store(Listing $listing, Request $request)
     {
         if ($request->hasFile('images')) {
+            $request->validate([
+                'images.*' => 'mimes:jpg,png,jpeg,webp|max:5000',
+            ], [
+                'images.*.mimes' => 'The file should be in one of the formats: jpg, png, jpeg, webp',
+            ]);
+
             foreach ($request->file('images') as $file) {
                 $path = $file->store('images', 'public');
 
@@ -39,6 +45,6 @@ class ListingImageController extends Controller
         Storage::disk('public')->delete($image->filename);
         $image->delete();
 
-        return back()->with('success', 'Image was deleted!');
+        return redirect()->back()->with('success', 'Image was deleted!');
     }
 }

@@ -41,10 +41,12 @@
             Restore
           </Link>
 
-          <div class="mt-2">
-            <Link :href="route('dashboard.listing.image.create', { listing: listing.id })" class="block w-full btn-outline text-xs font-medium text-center">Images</Link>
-          </div>
-
+          <Link 
+              :href="route('dashboard.listing.image.create', { listing: listing.id })" 
+              class="block w-full btn-outline text-xs font-medium text-center"
+            >
+              Images ({{ listing.images_count }})
+            </Link>
         </div>
       </div>
     </Box>
